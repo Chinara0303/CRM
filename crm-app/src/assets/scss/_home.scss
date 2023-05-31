@@ -1,0 +1,68 @@
+@import '../scss/partials/variables';
+@import '../scss/partials/mixin';
+@import '../scss/global';
+
+header {
+    @include Font;
+    a {
+        color: $colorWhite;
+    }
+
+    #top-bar {
+        background-color: $mainColor;
+        height: 60px;
+        .center {
+            padding-top: 10px;
+            color: $colorWhite;
+            font-size: $mainFontSize;
+            .phone-icon {
+                margin: 0 10px;
+                cursor: pointer;
+            }
+            .right-bar {
+                justify-content: space-around;
+                .menu {
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+                    cursor: pointer;
+                }
+
+                .socials {
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    #nav-area {
+        padding-top: 20px;
+
+        .right-area {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .list {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .text {
+                    text-transform: uppercase;
+                    font-size: $mainFontSize;
+                    border-bottom: 1px solid transparent;
+                    transition: all .4s;
+                    color: $mainColor;
+                    cursor: pointer;
+                    &:hover {
+                        border-bottom: 2px solid $secondMainColor ;
+                        color: $secondMainColor;
+                    }
+                }
+            }
+        }
+    }
+}

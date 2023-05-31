@@ -1,0 +1,83 @@
+a {
+  text-decoration: none !important;
+}
+
+.list {
+  padding-top: 0px !important;
+}
+.list:nth-child(1) {
+  width: 30%;
+}
+
+header {
+  font-family: Arial, Helvetica, sans-serif;
+}
+header a {
+  color: #fff;
+}
+header #top-bar {
+  background-color: #174873;
+  height: 60px;
+}
+header #top-bar .center {
+  padding-top: 10px;
+  color: #fff;
+  font-size: 17px;
+}
+header #top-bar .center .phone-icon {
+  margin: 0 10px;
+  cursor: pointer;
+}
+header #top-bar .center .right-bar {
+  justify-content: space-around;
+}
+header #top-bar .center .right-bar .menu {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+}
+header #top-bar .center .right-bar .socials {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+}
+header #nav-area {
+  padding-top: 20px;
+}
+header #nav-area .right-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+header #nav-area .right-area .list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+header #nav-area .right-area .list .text {
+  text-transform: uppercase;
+  font-size: 17px;
+  border-bottom: 1px solid transparent;
+  transition: all 0.4s;
+  color: #174873;
+  cursor: pointer;
+}
+header #nav-area .right-area .list .text:hover {
+  border-bottom: 2px solid #e79800;
+  color: #e79800;
+}
+
+@media (max-width: 576px) {
+  .center {
+    text-align: center !important;
+    font-size: 15px !important;
+  }
+}
+@media (max-width: 434px) {
+  .center {
+    text-align: center !important;
+    font-size: 15px !important;
+  }
+}/*# sourceMappingURL=App.css.map */
