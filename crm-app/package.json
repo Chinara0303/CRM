@@ -11,7 +11,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@mui/icons-material": "^5.11.16",
-    "@mui/material": "^5.13.3",
+    "@mui/lab": "^5.0.0-alpha.132",
     "@mui/styled-engine-sc": "^5.12.0",
     "@splidejs/react-splide": "^0.7.12",
     "@splidejs/splide": "^4.1.4",
@@ -24,6 +24,7 @@
     "react-scripts": "5.0.1",
     "sass": "^1.62.1",
     "styled-components": "^5.3.11",
+    "swiper": "^9.3.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

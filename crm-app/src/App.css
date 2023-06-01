@@ -9,9 +9,11 @@ a {
   width: 30%;
 }
 
-header {
+body {
+  height: 10000px;
   font-family: Arial, Helvetica, sans-serif;
 }
+
 header a {
   color: #fff;
 }
@@ -69,10 +71,163 @@ header #nav-area .right-area .list .text:hover {
   color: #e79800;
 }
 
+.slider-area .swiper {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.slider-area .swiper .swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 90% !important;
+  height: 500px !important;
+}
+.slider-area .swiper .swiper-slide img {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+.slider-area .swiper .text-area {
+  width: 50%;
+  position: absolute;
+  z-index: 999;
+  top: 45%;
+  left: 25%;
+  color: #fff;
+}
+.slider-area .swiper .text-area h1 {
+  text-transform: uppercase;
+}
+
+.banner-area {
+  margin-top: 40px;
+}
+.banner-area .overlay {
+  background-color: rgba(10, 104, 177, 0.8);
+  opacity: 1;
+  visibility: visible;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+.banner-area .box-area {
+  position: relative;
+}
+.banner-area .box-area img {
+  width: 100%;
+}
+.banner-area .box-area .text-area {
+  position: absolute;
+  top: 18%;
+  left: 10%;
+  color: #fff;
+  width: 75%;
+  text-align: center;
+}
+.banner-area .box-area .text-area h3 {
+  margin-left: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.banner-area .box-area .text-area p {
+  font-size: 17px;
+}
+.banner-area .box-area .text-area .advantage {
+  font-size: 17px;
+  padding-top: 0px !important;
+}
+
+.course-area {
+  background-color: #F7F7F7;
+  margin-top: 40px;
+  padding: 40px 0;
+  position: relative;
+}
+.course-area .title {
+  text-align: center;
+  position: relative;
+}
+.course-area .title h1 {
+  color: #2f2f2f;
+  font-weight: 700;
+  font-size: 44px;
+}
+.course-area .title p {
+  color: #5d5d5d;
+  letter-spacing: 1.5px;
+  text-transform: capitalize;
+  padding-bottom: 25px;
+}
+.course-area .title::after {
+  bottom: -1px;
+  color: rgb(231, 152, 0);
+  content: "\f19d";
+  font-size: 21px;
+  height: 24px;
+  left: 0px;
+  position: absolute;
+  right: 0px;
+  text-align: center;
+  width: 39px;
+  z-index: 9;
+  margin: 0px auto;
+  background: none 0px 0px repeat scroll rgb(247, 247, 247);
+}
+.course-area .title::before {
+  background: #e79800 none repeat scroll 0 0;
+  bottom: 0;
+  content: "";
+  height: 1px;
+  left: 0;
+  margin: 0 auto;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  width: 109px;
+}
+.course-area .css-0 {
+  display: flex;
+  justify-content: center;
+}
+.course-area .css-0 .MuiButtonBase-root {
+  color: #5d5d5d;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+.course-area .cart {
+  transition: all 0.3s;
+}
+.course-area .cart .header {
+  font-size: 20px;
+  font-weight: bold;
+}
+.course-area .cart .subtitle {
+  font-size: 17px;
+}
+.course-area .cart .text-area p {
+  font-size: 18px;
+  color: #5d5d5d;
+}
+.course-area .cart:hover {
+  background-color: #174873;
+}
+.course-area .cart:hover .text-area, .course-area .cart:hover p {
+  color: #e79800;
+}
+.course-area .cart:hover .subtitle {
+  color: #fff;
+}
+
 @media (max-width: 576px) {
   .center {
     text-align: center !important;
     font-size: 15px !important;
+  }
+  .banner .box-area .text-area p, .banner .box-area .text-area .advantage {
+    font-size: 17px !important;
   }
 }
 @media (max-width: 434px) {

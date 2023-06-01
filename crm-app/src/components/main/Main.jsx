@@ -1,11 +1,21 @@
 import React from 'react'
+import Banner from './Banner'
+import Course from './Course'
 import Slider from './Slider'
 
 function Main() {
   return (
-    <div>
-        <Slider/>
-    </div>
+    <main>
+      <section>
+        <Slider />
+      </section>
+      <section>
+        <Banner />
+      </section>
+      <section>
+        <Course/>
+      </section>
+    </main>
   )
 }
 
