@@ -1,14 +1,21 @@
 import { faClock } from '@fortawesome/free-regular-svg-icons'
-import { faEnvelope, faPhone, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
 import { faFacebookF, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Container, Grid, Link, List, ListItem } from '@mui/material'
+import { NavLink} from 'react-router-dom';
+
 
 import React from 'react'
 
 function Header() {
+    window.addEventListener("scroll", function () {
+        let nav = this.document.getElementById("nav-area").getBoundingClientRect().top;
+        console.log(nav);
+        nav >= 0 ? document.getElementById("nav").classList.remove("fixed") : document.getElementById("nav").classList.add("fixed");
+    })
     return (
-        <header>
+        <>
             <section id="top-bar">
                 <Container maxWidth='lg'>
                     <Grid container className='center'>
@@ -46,33 +53,33 @@ function Header() {
                 </Container>
             </section>
             <section id="nav-area">
-                <Container maxWidth='lg'>
-                    <Grid container spacing={1}>
-                        <Grid item lg={3}>
-                            <div className="logo-area">
-                                <img className='img-fluid' src={require('../../assets/images/logo.png')} alt="" />
-                            </div>
+                <div id="nav">
+                    <Container maxWidth='lg'>
+                        <Grid container spacing={1}>
+                            <Grid item lg={3}>
+                                <div className="logo-area">
+                                    <img className='img-fluid' src={require('../../assets/images/logo.png')} alt="" />
+                                </div>
+                            </Grid>
+                            <Grid item lg={9} className='right-area'>
+                                <List className='d-flex list'>
+                                    <ListItem>
+                                        <NavLink to='/' className='text'>Home</NavLink>
+                                    </ListItem>
+                                    <ListItem>
+                                        <NavLink to='/about' className='text'>About</NavLink>
+                                    </ListItem>
+                                    <ListItem>
+                                        <NavLink to='/contact' className='text'>Contact</NavLink>
+                                    </ListItem>
+                                </List>
+                            </Grid>
                         </Grid>
-                        <Grid item lg={9} className='right-area'>
-                            <List className='d-flex list'>
-                                <ListItem>
-                                    <Link className='text'>Home</Link>
-                                </ListItem>
-                                <ListItem>
-                                    <Link className='text'>About</Link>
-                                </ListItem>
-                                <ListItem>
-                                    <Link className='text'>Contact</Link>
-                                </ListItem>
-                                <ListItem>
-                                    <Link className='text'><FontAwesomeIcon icon={faMagnifyingGlass} size="lg" style={{ color: "#174873", }} /></Link>
-                                </ListItem>
-                            </List>
-                        </Grid>
-                    </Grid>
-                </Container>
+                    </Container>
+                </div>
+
             </section>
-        </header>
+        </>
     )
 }
 

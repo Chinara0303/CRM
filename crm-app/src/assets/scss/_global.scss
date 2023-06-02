@@ -8,3 +8,50 @@ a{
         width: 30%;
     }
 }
+
+.title {
+    text-align: center;
+    position: relative;
+
+    h1 {
+        color: #2f2f2f;
+        font-weight: 700;
+        font-size: 44px;
+    }
+
+    p {
+        color: #5d5d5d;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+        padding-bottom: 25px;
+    }
+
+    &::after {
+        bottom: -1px;
+        color: rgb(231, 152, 0);
+        content: "\f19d";
+        font-size: 21px;
+        height: 24px;
+        left: 0px;
+        position: absolute;
+        right: 0px;
+        text-align: center;
+        width: 39px;
+        z-index: 9;
+        margin: 0px auto;
+        background: none 0px 0px repeat scroll rgb(247, 247, 247);
+    }
+
+    &::before {
+        background: #e79800 none repeat scroll 0 0;
+        bottom: 0;
+        content: "";
+        height: 1px;
+        left: 0;
+        margin: 0 auto;
+        position: absolute;
+        right: 0;
+        text-align: center;
+        width: 109px;
+    }
+}

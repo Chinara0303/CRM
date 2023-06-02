@@ -1,2 +1,15 @@
 @import './assets/scss/home';
 @import './assets/scss/responsive';
+@import './assets/scss/partials/variables';
+
+
+
+::-webkit-scrollbar{width: 15px; }
+::-webkit-scrollbar-thumb {
+  background: $secondMainColor;
+  border-radius: 5px;
+}
+
+::-webkit-srcollbar-track{
+  background: white;
+}
