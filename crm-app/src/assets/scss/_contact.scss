@@ -1,0 +1,48 @@
+@import './partials/variables';
+.contact-area {
+    margin-top: 60px;
+
+    .contact-us-area {
+        margin-top: 60px;
+
+        .contact-info {
+            margin-top: 20px;
+
+            p {
+                font-size: 1rem;
+                line-height: 1.7;
+                color: #5d5d5d;
+            }
+
+            .social {
+                .social-area {
+                    display: flex;
+                    align-items: center;
+
+                    .MuiListItem-root {
+                        width: 10% !important;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        .right-side{
+            .css-13r4j3i .MuiTextField-root,.css-1ualgfl-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root,.btn {
+                margin: 15px 0;
+                width: 56ch;
+            }
+            .btn{
+                background-color: $secondMainColor;
+                color: $colorWhite;
+                font-weight: 600;
+            }
+        }
+      
+    }
+   
+    .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+        color: $secondMainColor !important;
+    
+    }
+  
+}

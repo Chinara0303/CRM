@@ -63,27 +63,22 @@ function Footer() {
                                     <h5>Social: </h5>
                                     <ListItem>
                                         <Link>
-                                            <FontAwesomeIcon className='icon' icon={faFacebookF} size="md" style={{ color: "#fff", }} />
+                                            <FontAwesomeIcon className='icon' icon={faFacebookF} size="sm" style={{ color: "#fff", }} />
                                         </Link>
                                     </ListItem>
                                     <ListItem>
                                         <Link>
-                                            <FontAwesomeIcon className='icon' icon={faTwitter} size="md" style={{ color: "#fff", }} />
+                                            <FontAwesomeIcon className='icon' icon={faTwitter} size="sm" style={{ color: "#fff", }} />
                                         </Link>
                                     </ListItem>
                                     <ListItem>
                                         <Link>
-                                            <FontAwesomeIcon className='icon' icon={faLinkedin} size="md" style={{ color: "#fff", }} />
+                                            <FontAwesomeIcon className='icon' icon={faLinkedin} size="sm" style={{ color: "#fff", }} />
                                         </Link>
                                     </ListItem>
                                     <ListItem>
                                         <Link>
-                                            <FontAwesomeIcon className='icon' icon={faInstagram} size="md" style={{ color: "#fff", }} />
-                                        </Link>
-                                    </ListItem>
-                                    <ListItem>
-                                        <Link>
-                                            <FontAwesomeIcon className='icon' icon={faYoutube} size="md" style={{ color: "#fff", }} />
+                                            <FontAwesomeIcon className='icon' icon={faInstagram} size="sm" style={{ color: "#fff", }} />
                                         </Link>
                                     </ListItem>
                                 </List>

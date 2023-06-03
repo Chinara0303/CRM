@@ -1,6 +1,8 @@
 import { Container, Grid, List, ListItem } from '@mui/material'
 import { faBook, faUsers } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import CourseImage from '../../assets/images/courses.jpg'
+import TeacherImage from '../../assets/images/teacher.jpg'
 import React from 'react'
 
 function Banner() {
@@ -8,9 +10,8 @@ function Banner() {
     <div className='banner-area'>
       <Container maxWidth='lg'>
         <Grid container spacing={2}>
-          <Grid item lg={6} md={6} xs={12}>
-            <div className="box-area " >
-              <img src={require('../../assets/images/courses.jpg')} alt="" />
+          <Grid item lg={6} sm={6} xs={12}>
+            <div className="box-area " style={{backgroundImage:`url(${CourseImage})`}}>
               <div className="overlay"></div>
               <div className="text-area">
                 <h3><FontAwesomeIcon icon={faBook} size="sm" style={{ color: "#fff", }} /> OUR COURSES</h3>
@@ -23,9 +24,8 @@ function Banner() {
               </div>
             </div>
           </Grid>
-          <Grid item lg={6} md={6} xs={12}>
-            <div className="box-area " >
-              <img className='img-fluid' src={require('../../assets/images/teacher.jpg')} alt="" />
+          <Grid item lg={6} sm={6} xs={12}>
+            <div className="box-area" style={{backgroundImage:`url(${TeacherImage})`}}>
               <div className="overlay"></div>
               <div className="text-area">
                 <h3><FontAwesomeIcon icon={faUsers} size="sm" style={{ color: "#fff", }} /> OUR Teachers</h3>

@@ -7,7 +7,6 @@ body {
 }
 
 //header start
-
 .fixed {
     position: fixed;
     top: 0;
@@ -15,84 +14,86 @@ body {
     background: $colorWhite;
     width: 100%;
     z-index: 20;
-    padding: 15px 0;
+    padding-top: 15px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-  }
+}
 
-    #top-bar {
-        background-color: $mainColor;
-        height: 60px;
-        a {
-            color: $colorWhite;
+#top-bar {
+    background-color: $mainColor;
+    height: 60px;
+
+    a {
+        color: $colorWhite;
+    }
+
+    .center {
+        padding-top: 10px;
+        color: $colorWhite;
+        font-size: $mainFontSize;
+
+        .phone-icon {
+            margin: 0 10px;
+            cursor: pointer;
         }
 
-        .center {
-            padding-top: 10px;
-            color: $colorWhite;
-            font-size: $mainFontSize;
+        .right-bar {
+            justify-content: space-around;
 
-            .phone-icon {
-                margin: 0 10px;
+            .menu {
+                display: flex;
+                gap: 10px;
+                align-items: center;
                 cursor: pointer;
             }
 
-            .right-bar {
-                justify-content: space-around;
-
-                .menu {
-                    display: flex;
-                    gap: 10px;
-                    align-items: center;
-                    cursor: pointer;
-                }
-
-                .socials {
-                    display: flex;
-                    gap: 10px;
-                    align-items: center;
-                    cursor: pointer;
-                }
+            .socials {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                cursor: pointer;
             }
         }
     }
+}
 
-    #nav-area {
-        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-        padding: 15px 0;
-        a {
-            color: $colorWhite;
-        }
-        .right-area {
+#nav-area {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    padding-top: 15px;
+
+    a {
+        color: $colorWhite;
+    }
+
+    .right-area {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .list {
             display: flex;
             align-items: center;
             justify-content: center;
 
-            .list {
-                display: flex;
-                align-items: center;
-                justify-content: center;
+            .text {
+                text-transform: uppercase;
+                font-size: $mainFontSize;
+                border-bottom: 1px solid transparent;
+                transition: all .4s;
+                color: $mainColor;
+                cursor: pointer;
 
-                .text {
-                    text-transform: uppercase;
-                    font-size: $mainFontSize;
-                    border-bottom: 1px solid transparent;
-                    transition: all .4s;
-                    color: $mainColor;
-                    cursor: pointer;
-
-                    &:hover {
-                        border-bottom: 2px solid $secondMainColor ;
-                        color: $secondMainColor;
-                    }
+                &:hover {
+                    border-bottom: 2px solid $secondMainColor ;
+                    color: $secondMainColor;
                 }
             }
         }
     }
-
+}
 
 //header end
+//main end
 
-//main start
 //slider area start
 .slider-area {
     .swiper {
@@ -104,7 +105,7 @@ body {
             background-position: center;
             background-size: cover;
             width: 90% !important;
-            height: 500px !important;
+            height: 500px;
 
             img {
                 position: relative;
@@ -150,10 +151,10 @@ body {
 
     .box-area {
         position: relative;
-
-        img {
-            width: 100%;
-        }
+        background-size: cover;
+        height: 365px;
+        background-repeat: no-repeat;
+        background-position: center;
 
         .text-area {
             position: absolute;
@@ -185,7 +186,6 @@ body {
 //banner area end
 
 //course area start
-
 .course-area {
     background-color: #F7F7F7;
     margin-top: 40px;
@@ -241,6 +241,7 @@ body {
 }
 
 //course area end
+
 //teachers area start
 .teachers-area {
     margin-top: 40px;
@@ -252,6 +253,8 @@ body {
     }
 
     .teachers {
+        margin-top: 40px;
+
         .swiper-pagination-bullet-active {
             background-color: $secondMainColor;
         }
@@ -265,7 +268,7 @@ body {
 
                 img {
                     border-radius: 100%;
-                    border: 2px solid $secondMainColor;
+                    border-color: $secondMainColor;
                 }
             }
 
@@ -279,6 +282,7 @@ body {
                 background-color: rgba(23, 72, 115, 0.507);
                 border-radius: 100%;
                 transition: all .4s;
+                border: 2px solid $secondMainColor;
 
                 .list-area {
                     display: flex;
@@ -326,6 +330,10 @@ body {
                     margin: 0 !important;
                 }
             }
+        }
+
+        .swiper-pagination {
+            position: initial !important;
         }
     }
 
@@ -382,7 +390,8 @@ body {
     position: relative;
     background-position: center;
     background-size: cover;
-    height: 500px;
+    height: 400px;
+
     .overlay {
         background-color: #2f2f2fe0;
         position: absolute;
@@ -393,41 +402,51 @@ body {
     }
 
     .footer-content {
-        position: absolute;
-        top: 20%;
-        left: 13%;
         color: $colorWhite;
         font-weight: 600;
         .time-title {
             h4 {
+                position: relative;
+                z-index: inherit;
                 padding-left: 15px;
+                color: $colorWhite;
             }
+
             .line {
+                position: relative;
+                z-index: inherit;
                 width: 17%;
                 height: 2px;
                 background-color: $colorWhite;
                 margin-left: 15px;
             }
         }
-        .text-area{
+
+        .text-area {
             margin-left: 10px;
-            p{
+
+            p {
                 margin: 0 !important;
             }
         }
-        hr{
+
+        hr {
             border-bottom: 1px dashed rgba(237, 237, 237, 0.322) !important;
             border-top: 0;
             border-left: 0;
             width: 60%;
+            margin: 10px 0 !important;
         }
-        .social{
-            .social-area{
+
+        .social {
+            .social-area {
                 display: flex;
                 align-items: center;
-                h5{
-                    margin:  0;
+
+                h5 {
+                    margin: 0;
                 }
+
                 .MuiListItem-root {
                     width: 10% !important;
                     cursor: pointer;

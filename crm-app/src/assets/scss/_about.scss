@@ -1,0 +1,32 @@
+@import './partials/variables';
+
+.about-area {
+    margin-top: 60px;
+
+    .left-side {
+        height: 400px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .right-side {
+        h2 {
+            color: #2f2f2f;
+            font-weight: 600;
+
+            span {
+                color: $secondMainColor;
+            }
+        }
+
+        p {
+            font-size: 17px;
+            color: #2f2f2fc7;
+            &:nth-child(2) {
+                font-size: 22px;
+            font-weight: initial;
+
+            }
+        }
+    }
+}

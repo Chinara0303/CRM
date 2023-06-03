@@ -26,7 +26,6 @@ function Course() {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
@@ -55,7 +54,7 @@ function Course() {
                     </Box>
                     <TabPanel value="1">
                         <Grid container spacing={6}>
-                            <Grid item lg={4} md={4}>
+                            <Grid item lg={4} sm={6}>
                                 <Card className='cart'>
                                     <CardMedia
                                         component="img"
@@ -92,7 +91,7 @@ function Course() {
                                     </Collapse>
                                 </Card>
                             </Grid>
-                            <Grid item lg={4} md={4}>
+                            <Grid item lg={4} sm={6}>
                                 <Card className='cart'>
                                     <CardMedia
                                         component="img"
@@ -133,7 +132,7 @@ function Course() {
                                     </Collapse>
                                 </Card>
                             </Grid>
-                            <Grid item lg={4} md={4}>
+                            <Grid item lg={4} sm={6}>
                                 <Card className='cart'>
                                     <CardMedia
                                         component="img"

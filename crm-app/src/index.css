@@ -11,19 +11,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 .loading {
   animation: preloader 1s infinite ease-in-out;
   background-color: #124c62;
   border-radius: 100%;
-  height: 6em;
-  width: 6em;
+  /* height: 6em;
+  width: 6em; */
 }
 
 .preloader {
   align-items: center;
   background-color: white;
   display: flex;
-  height: 100vh;
+  /* height: 100vh; */
   justify-content: center;
-  width: 100vw;
+  /* width: 100vw; */
 }

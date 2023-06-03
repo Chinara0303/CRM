@@ -15,12 +15,32 @@ function Teachers() {
                 </div>
                 <div className="teachers">
                     <Swiper
-                        slidesPerView={4}
-                        spaceBetween={25}
-                        freeMode={true}
-                        pagination={{ clickable: true }}
-                        modules={[FreeMode, Pagination]}
-                        className="mySwiper">
+                     slidesPerView={1}
+                     spaceBetween={10}
+                     pagination={{
+                       clickable: true,
+                     }}
+                     breakpoints={{
+                       "@0.00": {
+                         slidesPerView: 1,
+                         spaceBetween: 10,
+                       },
+                       "@0.75": {
+                         slidesPerView: 3,
+                         spaceBetween: 20,
+                       },
+                       "@1.00": {
+                         slidesPerView: 3,
+                         spaceBetween: 40,
+                       },
+                       "@1.50": {
+                         slidesPerView: 4,
+                         spaceBetween: 50,
+                       },
+                     }}
+                     modules={[Pagination]}
+                        className="mySwiper"
+                       >
                         <SwiperSlide>
                             <div className="single-teacher">
                                 <div className="img-area">

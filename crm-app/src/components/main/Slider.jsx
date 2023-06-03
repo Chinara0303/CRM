@@ -26,7 +26,6 @@ function Slider() {
         modules={[EffectCoverflow, Pagination]}
         className="mySwiper"
       >
-  
         <SwiperSlide>
           <img src={require('../../assets/images/slide1.jpg')} />
           <div className="text-area">
