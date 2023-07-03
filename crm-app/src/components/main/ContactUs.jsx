@@ -1,14 +1,129 @@
-import { Box, Button, FormGroup, Grid, InputLabel, List, ListItem, MenuItem, Select, TextField } from '@mui/material'
+import { Box, Button, FormGroup, Grid, InputLabel, List, ListItem, MenuItem, Select, TextField,FormHelperText } from '@mui/material'
 import { faFacebookF, faLinkedin, faTwitter, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Form, FormFeedback } from 'reactstrap'
+import Swal from 'sweetalert2';
+import axios from 'axios';
+
+
 
 function ContactUs() {
-    const[course,setCourse]=useState('')
-    const handleSet=e=>{
-        setCourse(e.target.value)
+    const baseUrl = "https://localhost:7069";
+
+    const [invalidFullName, setInvalidFullName] = useState(false);
+    const [invalidEmail, setInvalidEmail] = useState(false);
+    const [invalidPhone, setInvalidPhone] = useState(false);
+    const [invalidEmailMessage, setInvalidEmailMessage] = useState("");
+    const [invalidFullNameMessage, setInvalidFullNameMessage] = useState("");
+    const [invalidPhoneMessage, setInvalidPhoneMessage] = useState("");
+
+    const [educationId, setEducationId] = useState();
+    const [fullName, setFullName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+    const [message, setMessage] = useState("");
+    const [educations, setEducations] = useState([])
+
+    const newContact = { fullName: fullName, phone: phone, message: message, email: email, educationId: educationId }
+
+    const getAllAsync = async () => {
+        try {
+            await axios.get(`${baseUrl}/api/education/getall`)
+                .then((res) => {
+                    if (res.data.length > 0) {
+                        setEducations(res.data)
+                    }
+                });
+
+        } catch (error) {
+            Swal.fire({
+                title: 'Oops...',
+                text: 'Something went wrong',
+                icon: 'error',
+                confirmButtonText: 'Cool'
+            })
+        }
     }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+        for (const [key, value] of Object.entries(newContact)) {
+            formData.append(key, value);
+        };
+
+        try {
+            await axios.post(`${baseUrl}/api/contact/create`, formData, {
+                headers: {
+                    Accept: "*/*"
+                }
+            })
+                .then(() => {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Thanks!',
+                        showConfirmButton: false,
+                        timer: 1000,
+                    })
+
+                    setFullName('');
+                    setPhone('');
+                    setMessage('');
+                    setEmail('');
+                    setEducationId();
+                })
+        }
+        catch (error) {
+            console.log(error);
+            const errors = error.response.data.errors;
+            if (errors.FullName != undefined) {
+                if (errors.FullName.length > 0) {
+                    setInvalidFullName(true);
+                    setInvalidFullNameMessage(errors.FullName)
+                }
+            }
+            if (errors.Email != undefined) {
+                if (errors.Email.length > 0) {
+                    setInvalidEmail(true);
+                    setInvalidEmailMessage(errors.Email)
+                }
+            }
+            if (errors.Phone != undefined) {
+                if (errors.Phone.length > 0) {
+                    setInvalidPhone(true);
+                    setInvalidPhoneMessage(errors.Phone)
+                }
+            }
+        }
+    };
+
+    const handleEducationIdChange = e => {
+        setEducationId(e.target.value)
+    }
+    const handleFullNameChange = e => {
+        setFullName(e.target.value)
+        setInvalidFullName(false)
+    }
+    const handlePhoneChange = e => {
+        setPhone(e.target.value)
+        setInvalidPhone(false)
+    }
+    const handleMessageChange = e => {
+        setMessage(e.target.value)
+    }
+    const handleEmailChange = e => {
+        setEmail(e.target.value)
+        setInvalidEmail(false)
+    }
+
+    useEffect(() => {
+        getAllAsync()
+    }, [])
+
     return (
         <div className='contact-us-area'>
             <Grid container spacing={12}>
@@ -70,53 +185,101 @@ function ContactUs() {
                             <p>Once we receive your information our representative will get back to you within 24 hours.</p>
                         </div>
                         <div className="form-area">
-                            <FormGroup>
+                            <Form onSubmit={(e) => handleSubmit(e)}>
                                 <Box
-                                    component="form"
-                                    sx={{'& .MuiTextField-root': { m: 1, width: '25ch' },}}
+                                    sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }}
                                     noValidate
-                                    autoComplete="off"
                                 >
-                                    <div>
+                                    <FormGroup>
                                         <TextField
                                             id="fullWidth"
-                                            label="Your FullName"
+                                            label="Your fullName"
                                             fullWidth
                                             maxRows={4}
                                             variant="standard"
+                                            value={fullName}
+                                            error={invalidFullName}
+                                            onChange={(e) => handleFullNameChange(e)}
+                                            name="fullName"
+                                            autoComplete="off"
                                         />
+                                        {
+                                            invalidFullName && (
+                                                <FormHelperText error>{invalidFullNameMessage}</FormHelperText>
+                                            )
+                                        }
+                                    </FormGroup>
+                                    <FormGroup>
                                         <TextField
                                             id="standard-textarea"
                                             label="Your phone number"
                                             fullWidth
                                             variant="standard"
-                                            type='number'
+                                            autoComplete="off"
+                                            name="phone"
+                                            error={invalidPhone}
+                                            value={phone}
+                                            onChange={(e) => handlePhoneChange(e)}
                                         />
-                                         <InputLabel style={{marginTop:"20px"}} id="demo-simple-select-standard-label">Select the field you wish to apply for</InputLabel>
+                                         {
+                                            invalidPhone && (
+                                                <FormHelperText error>{invalidPhoneMessage}</FormHelperText>
+                                            )
+                                        }
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <TextField
+                                            id="standard-textarea"
+                                            label="Your email"
+                                            fullWidth
+                                            variant="standard"
+                                            autoComplete="off"
+                                            type='text'
+                                            name="email"
+                                            error={invalidEmail}
+                                            value={email}
+                                            onChange={(e) => handleEmailChange(e)}
+                                        />
+                                         {
+                                            invalidEmail && (
+                                                <FormHelperText error>{invalidEmailMessage}</FormHelperText>
+                                            )
+                                        }
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <InputLabel style={{ marginTop: "20px" }} id="demo-simple-select-standard-label">Select the field you wish to apply for</InputLabel>
                                         <Select
                                             labelId="demo-simple-select-standart-label"
                                             id="demo-simple-select-filled"
                                             fullWidth
-                                            value={course}
-                                            onChange={handleSet}
-                                        >
-                                            <MenuItem value='Graphic design'>Graphic design</MenuItem>
-                                            <MenuItem value='Web development'>Web development</MenuItem>
-                                            <MenuItem value='dIGITAL MARKETING'>dIGITAL MARKETING</MenuItem>
-                                            <MenuItem value='Software engineering'>Software engineering</MenuItem>
+                                            value={educationId}
+                                            name="educationId"
+                                            autoComplete="off"
+                                            onChange={(e) => handleEducationIdChange(e)}>
+                                            {
+                                                educations.map(function (education, i) {
+                                                    return <MenuItem key={i} value={education.id}>{education.name}</MenuItem>
+                                                })
+                                            }
+
                                         </Select>
+                                    </FormGroup>
+                                    <FormGroup>
                                         <TextField
                                             id="standard-multiline-static"
                                             label="Additional "
                                             multiline
                                             rows={4}
                                             variant="standard"
+                                            name="message"
+                                            autoComplete="off"
+                                            value={message}
+                                            onChange={(e) => handleMessageChange(e)}
                                         />
-                                    </div>
+                                    </FormGroup>
+                                    <Button type="submit" className='btn'>Send Message</Button>
                                 </Box>
-                                <Button className='btn'>Send Message</Button>
-                            </FormGroup>
-
+                            </Form>
                         </div>
                     </div>
                 </Grid>
