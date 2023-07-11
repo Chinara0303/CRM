@@ -11,7 +11,7 @@ import axios from 'axios';
 
 
 function ContactUs() {
-    const baseUrl = "https://localhost:7069";
+    const baseUrl = "http://webfulleducation-001-site1.atempurl.com";
 
     const [invalidFullName, setInvalidFullName] = useState(false);
     const [invalidEmail, setInvalidEmail] = useState(false);
@@ -26,6 +26,7 @@ function ContactUs() {
     const [phone, setPhone] = useState('');
     const [message, setMessage] = useState("");
     const [educations, setEducations] = useState([])
+    const [setting, setSetting] = useState([]);
 
     const newContact = { fullName: fullName, phone: phone, message: message, email: email, educationId: educationId }
 
@@ -47,6 +48,25 @@ function ContactUs() {
             })
         }
     }
+
+    const getSettingAsync = async () => {
+        try {
+          await axios.get(`${baseUrl}/api/setting/getall`)
+            .then((res) => {
+              console.log(res.data)
+                setSetting(res.data);
+              
+            });
+    
+        } catch (error) {
+          Swal.fire({
+            title: 'Oops...',
+            text: 'Something went wrong',
+            icon: 'error',
+            confirmButtonText: 'Cool'
+          })
+        }
+      }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -122,6 +142,7 @@ function ContactUs() {
 
     useEffect(() => {
         getAllAsync()
+        getSettingAsync()
     }, [])
 
     return (
@@ -133,14 +154,14 @@ function ContactUs() {
                         <div className="contact-info">
                             <h4>Meet our Company</h4>
                             <hr />
-                            <p>111 Street and house #1 Vilane, Washington 99221 USA</p>
+                            <p>{setting.Address}</p>
                         </div>
                         <div className="contact-info">
                             <h4>Get in Touch</h4>
                             <hr />
-                            <p><strong>Office: </strong>123-123-1234<br />
-                                <strong>Fax: </strong>123-323-3343<br />
-                                <strong>Toll Free: </strong>123-425-6234<br />
+                            <p><strong>Office: </strong>{setting.Phone}<br />
+                                <strong>Fax: </strong>{setting.Fax}<br />
+                                <strong>Toll Free: </strong>{setting.TollFree}<br />
                             </p>
                         </div>
                         <div className="contact-info">

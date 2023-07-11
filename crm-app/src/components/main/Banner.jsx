@@ -4,40 +4,57 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CourseImage from '../../assets/images/courses.jpg'
 import TeacherImage from '../../assets/images/teacher.jpg'
 import React from 'react'
+import axios from 'axios'
+import Swal from 'sweetalert2'
+import { useState } from 'react'
+import { useEffect } from 'react'
 
 function Banner() {
+  const baseUrl = "http://webfulleducation-001-site1.atempurl.com";
+  const [banners, setBanners] = useState([]);
+
+  const getAllAsync = async () => {
+    try {
+      await axios.get(`${baseUrl}/api/banner/getall`)
+        .then((res) => {
+          console.log(res.data)
+          if (res.data.length > 0) {
+            setBanners(res.data);
+          }
+        });
+
+    } catch (error) {
+      Swal.fire({
+        title: 'Oops...',
+        text: 'Something went wrong',
+        icon: 'error',
+        confirmButtonText: 'Cool'
+      })
+    }
+  }
+  useEffect(() => {
+    getAllAsync()
+  }, [])
   return (
     <div className='banner-area'>
       <Container maxWidth='lg'>
         <Grid container spacing={2}>
-          <Grid item lg={6} sm={6} xs={12}>
-            <div className="box-area " style={{backgroundImage:`url(${CourseImage})`}}>
-              <div className="overlay"></div>
-              <div className="text-area">
-                <h3><FontAwesomeIcon icon={faBook} size="sm" style={{ color: "#fff", }} /> OUR COURSES</h3>
-                <p>We are very happy to introduce many dynamic courses which includes many new and great features happy to …</p>
-                <List>
-                  <ListItem className='advantage'>Better designed programs for you</ListItem>
-                  <ListItem className='advantage'>Online Availability to sources</ListItem>
-                  <ListItem className='advantage'> Helping Board in your learning management</ListItem>
-                </List>
+          {
+            banners.map(function(banner,i){
+              return <Grid key={i} item lg={6} sm={6} xs={12}>
+              <div className="box-area " style={{backgroundImage:`url('data:image/jpeg;base64,${banner.image}')`}}>
+                <div className="overlay"></div>
+                <div className="text-area">
+                  <h3><FontAwesomeIcon icon={faBook} size="sm" style={{ color: "#fff", }} />{banner.title}</h3>
+                  <p>{banner.description}</p>
+                  <List>
+                    <ListItem className='advantage'>{banner.offer}</ListItem>
+                  </List>
+                </div>
               </div>
-            </div>
-          </Grid>
-          <Grid item lg={6} sm={6} xs={12}>
-            <div className="box-area" style={{backgroundImage:`url(${TeacherImage})`}}>
-              <div className="overlay"></div>
-              <div className="text-area">
-                <h3><FontAwesomeIcon icon={faUsers} size="sm" style={{ color: "#fff", }} /> OUR Teachers</h3>
-                <p>We have got some best teachers available in town who can help you to polish your skills as much as you can …</p>
-                <List>
-                  <ListItem className='advantage'>Better designed programs for you</ListItem>
-                  <ListItem className='advantage'>Online Availability to sources</ListItem>
-                  <ListItem className='advantage'> Helping Board in your learning management</ListItem>
-                </List>
-              </div>
-            </div>
-          </Grid>
+            </Grid>
+            })
+          }
         </Grid>
       </Container>
     </div>

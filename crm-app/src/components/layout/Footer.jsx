@@ -5,9 +5,37 @@ import { faFacebookF, faLinkedin, faTwitter,faInstagram,faYoutube } from '@forta
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import React from 'react'
+import { useEffect } from 'react'
+import Swal from 'sweetalert2'
+import axios from 'axios'
+import { useState } from 'react'
 
 
 function Footer() {
+    const baseUrl = "http://webfulleducation-001-site1.atempurl.com";
+    const [setting, setSetting] = useState([]);
+  
+    const getAllAsync = async () => {
+      try {
+        await axios.get(`${baseUrl}/api/setting/getall`)
+          .then((res) => {
+              setSetting(res.data);
+          });
+  
+      } catch (error) {
+        console.log(error)
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong',
+          icon: 'error',
+          confirmButtonText: 'Cool'
+        })
+      }
+    }
+    useEffect(() => {
+      getAllAsync()
+    }, [])
+
     return (
         <div className='footer-area' style={{ backgroundImage: `url(${BgImage})` }} >
             <div className="overlay"></div>
@@ -39,21 +67,21 @@ function Footer() {
                                     <FontAwesomeIcon icon={faHouse} size="xl" style={{ color: "#fff" }} />
                                     <div className="text-area">
                                         <p>ADDRESS</p>
-                                        <p>132 Jefferson Avenue, Suite 22, Redwood City, CA 94872,</p>
+                                        <p>{setting.Address}</p>
                                     </div>
                                 </ListItem>
                                 <ListItem>
                                     <FontAwesomeIcon icon={faPhone} size="xl" style={{ color: "#fff" }} />
                                     <div className="text-area">
                                         <p>Phone</p>
-                                        <p>123 123 1234</p>
+                                        <p>{setting.Phone}</p>
                                     </div>
                                 </ListItem>
                                 <ListItem>
                                     <FontAwesomeIcon icon={faEnvelope} size="xl" style={{ color: "#fff" }} />
                                     <div className="text-area">
                                         <p>Email</p>
-                                        <p>ateeq@yoursite.com</p>
+                                        <p>{setting.EmailAdress}</p>
                                     </div>
                                 </ListItem>
                                 <hr />

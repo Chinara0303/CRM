@@ -7,12 +7,41 @@ import { NavLink} from 'react-router-dom';
 
 
 import React from 'react'
+import { useEffect } from 'react'
+import Swal from 'sweetalert2'
+import axios from 'axios'
+import { useState } from 'react'
 
 function Header() {
     window.addEventListener("scroll", function () {
         let nav = this.document.getElementById("nav-area").getBoundingClientRect().top;
         nav >= 0 ? document.getElementById("nav").classList.remove("fixed") : document.getElementById("nav").classList.add("fixed");
     })
+
+    const baseUrl = "http://webfulleducation-001-site1.atempurl.com";
+    const [setting, setSetting] = useState([]);
+  
+    const getAllAsync = async () => {
+      try {
+        await axios.get(`${baseUrl}/api/setting/getall`)
+          .then((res) => {
+              setSetting(res.data);
+            
+          });
+  
+      } catch (error) {
+        console.log(error)
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong',
+          icon: 'error',
+          confirmButtonText: 'Cool'
+        })
+      }
+    }
+    useEffect(() => {
+      getAllAsync()
+    }, [])
     return (
         <>
             <section id="top-bar">
@@ -21,13 +50,13 @@ function Header() {
                         <Grid item lg={6} xs={12} md={6}>
                             <span>Questions?</span>
                             <FontAwesomeIcon className='phone-icon' icon={faPhone} size="sm" style={{ color: "#fff", }} />
-                            <a href='tel:123-123-1234'>123-123-1234</a>
+                            <a href='tel:123-123-1234'>{setting.Phone}</a>
                         </Grid>
                         <Grid item lg={6} xs={12} md={6} container className='right-bar'>
                             <div className='menu'>
                                 <div className="email-area d-flex gap-2 align-items-center">
                                     <FontAwesomeIcon icon={faEnvelope} size="sm" style={{ color: "#fff", }} />
-                                    <a href="mailto:youremail@site.com">youremail@site.com</a>
+                                    <a href="mailto:youremail@site.com">{setting.EmailAdress}</a>
                                 </div>
                                 <div className="hours d-flex gap-2 align-items-center d-lg-block d-md-block d-none">
                                     <FontAwesomeIcon icon={faClock} size="sm" style={{ color: "#fff",marginRight:"10px" }} />
@@ -56,7 +85,7 @@ function Header() {
                         <Grid container spacing={1}>
                             <Grid item lg={3}>
                                 <div className="logo-area">
-                                    <img className='img-fluid' src={require('../../assets/images/logo.png')} alt="" />
+                                    <img className='img-fluid' src={`data:image/jpeg;base64,${setting.Logo}`} alt="" />
                                 </div>
                             </Grid>
                             <Grid item lg={9} className='right-area'>
