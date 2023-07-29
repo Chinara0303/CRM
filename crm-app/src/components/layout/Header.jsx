@@ -41,7 +41,7 @@ function Header() {
     }
     useEffect(() => {
       getAllAsync()
-    }, [])
+    }, [setting])
     return (
         <>
             <section id="top-bar">
@@ -85,7 +85,7 @@ function Header() {
                         <Grid container spacing={1}>
                             <Grid item lg={3}>
                                 <div className="logo-area">
-                                    <img className='img-fluid' src={`data:image/jpeg;base64,${setting.Logo}`} alt="" />
+                                    <img className='img-fluid' src={require('../../assets/images/logo.png')} alt="" />
                                 </div>
                             </Grid>
                             <Grid item lg={9} className='right-area'>

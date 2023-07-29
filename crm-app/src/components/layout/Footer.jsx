@@ -10,7 +10,6 @@ import Swal from 'sweetalert2'
 import axios from 'axios'
 import { useState } from 'react'
 
-
 function Footer() {
     const baseUrl = "http://webfulleducation-001-site1.atempurl.com";
     const [setting, setSetting] = useState([]);

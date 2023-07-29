@@ -16,7 +16,6 @@ function About() {
       await axios.get(`${baseUrl}/api/about/getall`)
         .then((res) => {
           if (res.data.length > 0) {
-            console.log(res.data)
             setAbout(res.data);
           }
         });

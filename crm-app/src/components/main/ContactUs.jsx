@@ -53,7 +53,6 @@ function ContactUs() {
         try {
           await axios.get(`${baseUrl}/api/setting/getall`)
             .then((res) => {
-              console.log(res.data)
                 setSetting(res.data);
               
             });
@@ -77,9 +76,6 @@ function ContactUs() {
 
         try {
             await axios.post(`${baseUrl}/api/contact/create`, formData, {
-                headers: {
-                    Accept: "*/*"
-                }
             })
                 .then(() => {
                     Swal.fire({
@@ -98,7 +94,6 @@ function ContactUs() {
                 })
         }
         catch (error) {
-            console.log(error);
             const errors = error.response.data.errors;
             if (errors.FullName != undefined) {
                 if (errors.FullName.length > 0) {

@@ -17,7 +17,6 @@ function Banner() {
     try {
       await axios.get(`${baseUrl}/api/banner/getall`)
         .then((res) => {
-          console.log(res.data)
           if (res.data.length > 0) {
             setBanners(res.data);
           }

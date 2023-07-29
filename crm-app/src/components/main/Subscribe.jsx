@@ -29,7 +29,7 @@ function Subscribe() {
           Swal.fire({
             position: 'top-end',
             icon: 'success',
-            title: 'You are subscribe',
+            title: 'You are subscribed',
             showConfirmButton: false,
             timer: 1000,
           })
@@ -37,19 +37,16 @@ function Subscribe() {
         })
     }
     catch (error) {
-      const errors = error.response.data.errors;
-      if (errors.Email != undefined) {
-        if (errors.Email.length > 0) {
           setInvalidEmail(true);
-          setInvalidEmailMessage(errors.Email)
-        }
-      }
+          setInvalidEmailMessage(error.response.data)
     }
   };
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
     setInvalidEmail(false);
+    setInvalidEmailMessage("")
+
   };
 
   return (
@@ -60,6 +57,7 @@ function Subscribe() {
             <Input type='text' invalid={invalidEmail} value={email} placeholder='Enter your email' onChange={handleEmailChange} />
             <button>Subscribe</button>
           </div>
+          <span style={{color:"white"}}>{invalidEmailMessage}</span>
         </form>
       </Container>
 

@@ -16,7 +16,6 @@ function Slider() {
     try {
       await axios.get(`${baseUrl}/api/slider/getall`)
         .then((res) => {
-          console.log(res.data)
           if (res.data.length > 0) {
             setSliders(res.data);
           }
