@@ -9,7 +9,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 function Teachers() {
-    const baseUrl = "http://webfulleducation-001-site1.atempurl.com";
+    const baseUrl = "https://localhost:7069";
     const [teachers, setTeachers] = useState([]);
 
     const getAllAsync = async () => {

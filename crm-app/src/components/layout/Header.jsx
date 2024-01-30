@@ -18,7 +18,7 @@ function Header() {
         nav >= 0 ? document.getElementById("nav").classList.remove("fixed") : document.getElementById("nav").classList.add("fixed");
     })
 
-    const baseUrl = "http://webfulleducation-001-site1.atempurl.com";
+    const baseUrl = "https://localhost:7069";
     const [setting, setSetting] = useState([]);
   
     const getAllAsync = async () => {

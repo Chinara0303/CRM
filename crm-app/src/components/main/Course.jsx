@@ -7,7 +7,7 @@ import axios from 'axios';
 
 function Course() {
  
-    const baseUrl = "http://webfulleducation-001-site1.atempurl.com";
+    const baseUrl = "https://localhost:7069";
     const [courses, setCourses] = useState([]);
 
     const getAllAsync = async () => {

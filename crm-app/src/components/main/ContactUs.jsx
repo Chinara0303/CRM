@@ -11,7 +11,7 @@ import axios from 'axios';
 
 
 function ContactUs() {
-    const baseUrl = "http://webfulleducation-001-site1.atempurl.com";
+    const baseUrl = "https://localhost:7069";
 
     const [invalidFullName, setInvalidFullName] = useState(false);
     const [invalidEmail, setInvalidEmail] = useState(false);
